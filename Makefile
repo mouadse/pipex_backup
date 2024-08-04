@@ -1,7 +1,7 @@
 NAME        := pipex
 BONUS_NAME  := pipex_bonus
 CC          := gcc
-FLAGS       := -Wall -Wextra -Werror
+FLAGS       := -Wall -Wextra -Werror -g3
 SRCS        := memory_management.c \
                error_handling.c \
                libft_utils3.c \

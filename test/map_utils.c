@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:49:58 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/02 22:56:13 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:05:01 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	validate_map_format(const t_game_map *map)
 		{
 			if (!is_valid_map_character(map->layout[row][col]))
 			{
-				// to be replaced by my own ft_printf
 				return (0);
 			}
 			col++;
@@ -89,35 +88,26 @@ int	validate_map_format(const t_game_map *map)
 
 int	validate_map(const t_game_map *map)
 {
-    // Check if the map format is valid
-    if (!validate_map_format(map))
-        return (ft_printf("Error\n❌ Invalid map format ❌\n"), 0);
+	int	num_exits;
+	int	num_collectibles;
+	int	num_starting_positions;
 
-    // Check if the map is rectangular
-    if (!check_map_rectangular(map))
-        return (ft_printf("Error\n❌ The map must be rectangular ❌\n"), 0);
-
-    // Check if the map is enclosed by walls
-    if (!is_row_all_walls(map->layout[0])
-        || !is_row_all_walls(map->layout[map->rows - 1]))
-        return (ft_printf("Error\n❌ The map must be enclosed by walls ❌\n"), 0);
-
-    // Count and validate the number of exits
-    int num_exits = count_map_characters(map, 'E');
-    if (num_exits != 1)
-        return (ft_printf("Error\n❌ Num of Exits ❌\n"), 0);
-
-    // Count and validate the number of collectibles
-    int num_collectibles = count_map_characters(map, 'C');
-    if (num_collectibles < 1)
-        return (ft_printf("Error\n❌ Num of Coins❌\n"), 0);
-
-    // Count and validate the number of starting positions
-    int num_starting_positions = count_map_characters(map, 'P');
-    if (num_starting_positions != 1)
-        return (ft_printf("Map must contain exactly one starting position ❌\n"), 0);
-
-    // If all checks pass
-    return (1);
+	if (!validate_map_format(map))
+		return (ft_printf("Error\n❌ Invalid map format ❌\n"), 0);
+	if (!check_map_rectangular(map))
+		return (ft_printf("Error\n❌ The map must be rectangular ❌\n"), 0);
+	if (!is_row_all_walls(map->layout[0])
+		|| !is_row_all_walls(map->layout[map->rows - 1]))
+		return (ft_printf("Error\n❌ The map must be enclosed by walls ❌\n"), 0);
+	num_exits = count_map_characters(map, 'E');
+	if (num_exits != 1)
+		return (ft_printf("Error\n❌ Num of Exits ❌\n"), 0);
+	num_collectibles = count_map_characters(map, 'C');
+	if (num_collectibles < 1)
+		return (ft_printf("Error\n❌ Num of Coins❌\n"), 0);
+	num_starting_positions = count_map_characters(map, 'P');
+	if (num_starting_positions != 1)
+		return (ft_printf("Map must contain exactly one starting position ❌\n"),
+			0);
+	return (1);
 }
-

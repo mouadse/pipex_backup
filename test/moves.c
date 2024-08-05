@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:50:09 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/01 13:28:15 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:04:09 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ int	valid_move(t_game_state *state, int row, int col)
 		return (0);
 	if (state->map.layout[row][col] == '1')
 		return (0);
-	// trying to pass through the exit door is not allowed
 	if (state->map.layout[row][col] == 'E' && state->game_completed == 0)
 		return (0);
-	return (1); // this is a simple
+	return (1);
 }
 
 void	move_sprite_up(t_game_state *state)
@@ -37,18 +36,13 @@ void	move_sprite_up(t_game_state *state)
 		{
 			state->player.score += 10;
 			state->map.layout[state->player.row][state->player.col] = '0';
-			// lets say 2 is the player
 		}
-		mlx_put_image_to_window(state->mlx_instance, state->window_instance,
-			state->player.curr_animation[0], state->player.col * 32,
-			state->player.row * 32);
 		if (state->player.score == state->map.total_collectibles * 10)
 		{
 			state->game_completed = 1;
 			state->map.is_exit_open = true;
 		}
 		ft_printf("Moves %d\n", state->player.moves_count);
-		// to be refactored later with own ft_printf
 	}
 }
 
@@ -63,18 +57,13 @@ void	move_sprite_down(t_game_state *state)
 		{
 			state->player.score += 10;
 			state->map.layout[state->player.row][state->player.col] = '0';
-			// lets say 2 is the player
 		}
-		mlx_put_image_to_window(state->mlx_instance, state->window_instance,
-			state->player.curr_animation[2], state->player.col * 32,
-			state->player.row * 32);
 		if (state->player.score == state->map.total_collectibles * 10)
 		{
 			state->game_completed = 1;
 			state->map.is_exit_open = true;
 		}
 		ft_printf("Moves %d\n", state->player.moves_count);
-		// to be refactored later with own ft_printf
 	}
 }
 
@@ -89,18 +78,13 @@ void	move_sprite_right(t_game_state *state)
 		{
 			state->player.score += 10;
 			state->map.layout[state->player.row][state->player.col] = '0';
-			// lets say 2 is the player
 		}
-		mlx_put_image_to_window(state->mlx_instance, state->window_instance,
-			state->player.curr_animation[3], state->player.col * 32,
-			state->player.row * 32);
 		if (state->player.score == state->map.total_collectibles * 10)
 		{
 			state->game_completed = 1;
 			state->map.is_exit_open = true;
 		}
 		ft_printf("Moves %d\n", state->player.moves_count);
-		// to be refactored later with own ft_printf
 	}
 }
 
@@ -115,17 +99,12 @@ void	move_sprite_left(t_game_state *state)
 		{
 			state->player.score += 10;
 			state->map.layout[state->player.row][state->player.col] = '0';
-			// lets say 2 is the player
 		}
-		mlx_put_image_to_window(state->mlx_instance, state->window_instance,
-			state->player.curr_animation[1], state->player.col * 32,
-			state->player.row * 32);
 		if (state->player.score == state->map.total_collectibles * 10)
 		{
 			state->game_completed = 1;
 			state->map.is_exit_open = true;
 		}
 		ft_printf("Moves %d\n", state->player.moves_count);
-		// to be refactored later with own ft_printf
 	}
 }

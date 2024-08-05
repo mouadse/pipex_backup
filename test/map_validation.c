@@ -6,13 +6,12 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:48:59 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/04 23:21:49 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:19:02 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdbool.h>
-#include <string.h>
 
 int	check_duplicate_elements(t_game_state *state)
 {
@@ -41,7 +40,6 @@ int	check_map_rectangular(const t_game_map *map)
 	row = 0;
 	while (row < map->rows)
 	{
-		// strlen
 		if ((int)ft_strlen(map->layout[row]) != map->cols)
 		{
 			ft_printf("Error\n The map is not rectangular\n");
@@ -119,11 +117,11 @@ int	check_path_to_collectibles(t_game_state *state)
 	if (!has_valid_path(state))
 	{
 		state->map.layout[exit_row][exit_col] = original_exit;
-		return (0);
+		return (ft_printf("No Valid Path\n"), 0);
 	}
 	state->map.layout[exit_row][exit_col] = original_exit;
 	state->map.flood_fill_exit = true;
 	if (!has_valid_path(state))
-		return (0);
+		return (ft_printf("No valid Path\n"),0);
 	return (1);
 }

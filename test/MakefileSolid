@@ -1,6 +1,6 @@
 NAME        := so_long
 CC        := gcc
-FLAGS    := -Wall -Wextra -fsanitize=address,undefined -g3 -O0
+FLAGS    := -Wall -Wextra #-fsanitize=address,undefined -g3 -O0
 MLX_FLAGS := -lmlx -lXext -lX11
 
 SRCS        :=      get_next_line/get_next_line.c \
@@ -24,7 +24,6 @@ SRCS        :=      get_next_line/get_next_line.c \
                           dfs.c \
 
 OBJS        := $(SRCS:.c=.o)
-DEPS        := $(SRCS:.c=.d)
 
 all: $(NAME)
 
@@ -32,12 +31,10 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -MMD -MP -c $< -o $@
-
--include $(DEPS)
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(DEPS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

@@ -35,7 +35,7 @@ int validate_command_line_arguments(int argc, char **argv,
   map_filename = argv[1];
   state->map.file_path = map_filename;
   // Replace strlen with my own function
-  len = strlen(map_filename);
+  len = ft_strlen(map_filename);
   // Lets check the file extension to determine if its valid or not
   if (len < 4 || ft_strcmp(map_filename + len - 4, ".ber") != 0) {
     // Replace ft_printf here too with my own ft_printf

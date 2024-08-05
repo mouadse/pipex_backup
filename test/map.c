@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:50:05 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/02 23:20:17 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/04 23:22:00 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void load_map_from_queue(t_map_parse_queue *queue, t_game_map *map) {
   while (i < map->rows) {
     // strlen to replaced by my own strlen function later
     map->layout[i] = remove_from_queue(queue);
-    if ((int)strlen(map->layout[i]) > max_cols)
-      max_cols = strlen(map->layout[i]);
+    if ((int)ft_strlen(map->layout[i]) > max_cols)
+      max_cols = ft_strlen(map->layout[i]);
     i++;
   }
   map->cols = max_cols;

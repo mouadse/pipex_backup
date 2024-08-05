@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:48:59 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/02 13:06:12 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/04 23:21:49 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_map_rectangular(const t_game_map *map)
 	while (row < map->rows)
 	{
 		// strlen
-		if ((int)strlen(map->layout[row]) != map->cols)
+		if ((int)ft_strlen(map->layout[row]) != map->cols)
 		{
 			ft_printf("Error\n The map is not rectangular\n");
 			return (0);

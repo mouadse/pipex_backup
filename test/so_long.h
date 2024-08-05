@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:48:55 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/05 12:42:16 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:29:13 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <assert.h>
 # include <errno.h>
 # include <fcntl.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include <stdbool.h>
 // # include <stdio.h>
 # include <stdlib.h>

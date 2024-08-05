@@ -6,12 +6,12 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:50:21 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/01 13:28:15 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:04:26 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx_linux/mlx.h"
 #include "so_long.h"
-#include <stdio.h>
 
 int	handle_keypress(int keycode, t_game_state *state)
 {
@@ -48,18 +48,43 @@ int	handle_window_close(t_game_state *state)
 
 int	update_window(t_game_state *state)
 {
+	static int	prev_player_col = -1;
+	static int	prev_player_row = -1;
+
 	if (state->game_completed && state->player.col == state->level_exit.col
 		&& state->player.row == state->level_exit.row)
 	{
-		ft_printf("Congratulations! You have completed the game!\n");
+		ft_printf("Congratulations You have completed the game!\n");
+		// mlx_clear_window(state->mlx_instance, state->window_instance);
 		cleanup_game_resources(state);
 		exit(EXIT_SUCCESS);
 	}
-	mlx_clear_window(state->mlx_instance, state->window_instance);
-	render_game_map(state);
-	render_player(state);
+	if (prev_player_col != state->player.col
+		|| prev_player_row != state->player.row)
+	{
+		mlx_clear_window(state->mlx_instance, state->window_instance);
+		render_game_map(state);
+		render_player(state);
+		prev_player_col = state->player.col;
+		prev_player_row = state->player.row;
+	}
 	return (0);
 }
+
+// int	update_window(t_game_state *state)
+// {
+// 	if (state->game_completed && state->player.col == state->level_exit.col
+// 		&& state->player.row == state->level_exit.row)
+// 	{
+// 		ft_printf("Congratulations! You have completed the game!\n");
+// 		cleanup_game_resources(state);
+// 		exit(EXIT_SUCCESS);
+// 	}
+// 	mlx_clear_window(state->mlx_instance, state->window_instance);
+// 	render_game_map(state);
+// 	render_player(state);
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {

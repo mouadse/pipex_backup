@@ -6,7 +6,7 @@
 /*   By: msennane <msennane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:50:05 by msennane          #+#    #+#             */
-/*   Updated: 2024/08/04 23:22:00 by msennane         ###   ########.fr       */
+/*   Updated: 2024/08/05 14:09:58 by msennane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int load_and_parse_map(t_game_state *state) {
   initialize_queue_map(&state->parse_queue);
   fd = open(state->map.file_path, O_RDONLY);
   if (fd == -1)
-    return (close(fd), ft_printf("Map file could not be opened!!!"), 0);
+    return (close(fd), ft_printf("Map file could not be opened!!!\n"), 0);
   line = get_next_line(fd);
   while (line != NULL) {
     add_to_queue(&state->parse_queue, ft_strtrim(line, "\n"));
